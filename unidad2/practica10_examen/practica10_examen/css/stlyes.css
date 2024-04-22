@@ -1,0 +1,113 @@
+html{
+    --color-red: rgb(255 0 67);
+}
+
+body{
+    width: 1024px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+header{
+    padding-top: 15px;
+    width: 100%;
+}
+
+header img{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header nav{
+    width: 58%;
+    display: inline-block;
+}
+
+header nav ul{
+    margin: auto;   
+    padding-left: 120px;
+}
+
+header nav ul li{
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+header input{
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    vertical-align: middle;
+    width: 120px;
+}
+
+main{
+    margin-top: 50px;
+}
+
+main section{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#section01main{
+    width: 59%;
+}
+
+#section02main{
+    text-align: center;
+    width: 39%;
+}
+
+footer{
+    margin-top: 50px;
+}
+
+footer section{
+    margin-top: 50px;
+    padding-right: -10px;
+}
+
+footer section article{
+    display: inline-block;
+    width: 20%;
+    margin-right: 48    px;
+}
+
+.bigFont{
+    font-size: 3.6em;
+}
+
+.midFont{
+    font-size: 3em;
+}
+
+.smallFont{
+    font-size: 1.5em;
+}
+
+.boldFont{
+    font-weight: bold;
+}
+
+.buttonRed{
+    background-color: var(--color-red);
+    border-style: inherit;
+    color: white;
+    padding-top: 11px;
+    padding-bottom: 11px;   
+}
+.buttonWhite{
+    background-color: white;
+    border-style:solid;
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+.imgWork{
+    width: 100%;
+}

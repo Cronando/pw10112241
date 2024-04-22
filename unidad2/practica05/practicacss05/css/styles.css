@@ -1,0 +1,106 @@
+html{
+    --color-lightblue: rgb(36 93 146);
+    --color-darkblue: rgb(30 73 115);
+    --color-green: rgb(25 168 32);
+    --color-blue: rgb(27 109 169);
+    --color-purple: rgb(127 26 168);
+    --color-red: rgb(167 26 25);
+    --color-userblue: rgb(74 107 174);
+    --color-lightgrey: rgb(239 239 239);
+    --color-white: white;
+}
+
+body{
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 1028px;
+}
+
+header{
+    background-color: var(--color-lightblue);
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 500px;
+
+}
+
+main{
+    background-color: var(--color-lightgrey);
+    border-radius: 5px;
+    margin-top: -500px;
+    width: 98%;
+    margin-left: 1%;
+}
+
+#section01main{
+    width: auto;
+}
+
+#section01main nav ul{
+    text-align: right;
+    
+}
+
+#section01main nav ul li{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#section01main nav ul li img{
+    width: 100px;
+    border-radius: 5px;
+}
+
+#section02main{
+    width: 24%;
+    margin-left: 1%;
+}
+
+#sect02art01{  
+    background-color: var(--color-lightblue);
+    vertical-align: middle;
+}
+
+#sect02art01 img{
+    vertical-align: middle;
+    width: 20px;
+}
+
+#sect02art01 nav{
+    background-color: var(--color-darkblue);
+    
+}
+
+#sect02art01 nav ul{
+    margin: auto;
+    margin-left: -40px;
+}
+
+#sect02art01 nav ul li{
+    list-style: none;
+    margin: auto;
+}
+
+#sect02art01 nav ul li img{
+    vertical-align: middle;
+}
+
+#sect02art02{
+    border: 1px solid red;
+    background-color: var(--color-lightblue);
+    margin-top: 25px;
+    vertical-align: middle;
+}
+
+#sect02art02 img:nth-child(1){
+    width: 25px;
+    vertical-align: middle;
+}
+
+#sect02art02 img{
+    width: 100%;
+}
+
+.imgLogo{
+    width: 230px;
+}

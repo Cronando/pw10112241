@@ -1,0 +1,170 @@
+html{
+    --color-green: rgb(115 243 61);
+    --color-grey: rgb(135 135 135);
+}
+
+body{
+    font-size: 16px;
+    margin: 0 auto;
+    max-width: 1024px;  
+}
+
+header section{
+
+}
+
+header section nav{
+    margin-top: 30px;
+}
+
+header section nav ul{
+    text-align: left;
+    width: 61%;
+    margin-left: -40px;
+    display: inline-block;
+}
+
+header section nav ul li{
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header section img{
+    position: relative;
+    vertical-align: middle;
+}
+
+#sect01header{
+    text-align: right;
+    padding-top: 10px;
+}
+
+#sect02header{
+    
+}
+
+section{
+
+}
+
+section article{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#firstSection{
+}
+
+#art01sect01{
+    width: 56%;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+#art01sect01 hr{
+    margin-bottom: 30px;
+}
+
+#art01sect01 img{
+    width: 260px;
+    margin-right: 15px;
+    margin-top: 60px;
+}
+
+#art02sect01{
+    width: 40%;
+}
+#art02sect01 img{
+    position: relative;
+}
+
+#imgBike{
+    margin-top: -75px;
+}
+
+#secondSection{
+    margin-top: 50px;
+}
+
+#secondSection img{
+    vertical-align: middle;
+}
+
+footer{
+    margin-top: 40px;
+}
+
+footer section article{
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+}
+
+#artNewsSectionFooter{
+    width: 21%;
+}
+
+.greenColor{
+    color: var(--color-green);
+}
+
+.greyColor{
+    color: var(--color-grey);
+}
+
+.boldFont{
+    font-weight: bold;
+}
+
+.listFont{
+    font-size: 1.1em;
+}
+
+.middleFont{
+    font-size: 1.1em;
+}
+
+.hugeFont{
+    font-size: 4.1em;
+}
+
+.imgCircle{
+    width: 30px;
+}
+
+.imgLogo{
+    width: 180px;
+    padding-left: 15px;
+}
+
+.imgBuy{
+    width: 50px;
+    margin-left: 50px;
+}
+
+.imgGoTo{
+    width: 150px;
+    position: relative;
+    bottom: 50px;
+}
+
+.imgBike{
+    width: 420px;
+    top: 75px;
+}
+
+.imgWarranty{
+    width: 120px;
+}
+
+.imgIcons{
+    width: 20px;
+}
+
+.hrDashed{
+    border-style: dashed;
+    color: var(--color-grey);
+}
