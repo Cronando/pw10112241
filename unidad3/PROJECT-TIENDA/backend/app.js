@@ -6,48 +6,66 @@ let app = express();
 app.use(express.json());
 app.use(cors());
 
-let conexion = mysql.createConnection(
-    {
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'pwdata',
-        port: '3306'
+// Conexion a Mysql
+let conexion = mysql.createConnection({
+    host: "localhost",
+    user: 'root',
+    password: '',
+    database: 'pwdata',
+    port: '3306'
+});
+
+//Nos conectamos a Mysql
+conexion.connect(function (error) {
+    if (error) {
+        throw error;
+    } else {
+        console.log("Conected to BD!");
     }
-);
-conexion.connect(function(error){
-    if(error)
-        throw error;
-    else
-        console.log('conectado a la base de datos');
 });
-app.get('/api/clientes/',(req,res)=>{
-    conexion.query('select * from clientes',(error,fila)=>{
-        if(error)
-        throw error;
-    else
-        res.send(fila)
+
+//Rutas De Acceso
+app.get("/", function (req, res) {
+    res.send("Ruta De Inicio");
+});
+
+//seleccionamos un cliente en especifico
+app.get("/api/clientes/:id", (req, res) => {
+    conexion.query('select * from clientes where id = ?', [req.params.id], (error, regristos) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(regristos);
+        }
     });
 });
-app.get('/api/clientes/:id',(req,res)=>{
-    conexion.query('select * from clientes where id=?',[req.params.id],
-    (error,fila)=>{
-        if(error)
-        throw error;
-    else
-        res.send(fila)
+
+//seleccionamos todo los clientes
+app.get("/api/clientes", (req, res) => {
+    conexion.query('select * from clientes', (error, regristos) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(regristos);
+        }
+
     });
 });
-app.delete('/api/clientes/:id',(req,res)=>{
-    conexion.query('delete from clientes where id=?',[req.params.id],
-    (error,fila)=>{
-        if(error)
-        throw error;
-    else
-        res.send(fila)
+
+//borrar
+app.delete('/api/clientes/:id', (req, res) => {
+    let id = req.params.id;
+    conexion.query('DELETE FROM clientes WHERE id = ?', [id], (error, regristos) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(regristos);
+        }
     });
 });
-app.post('/api/clientes',(req,res)=>{
+
+//insertar un nuevo cliente
+app.post('/api/clientes', (req, res) => {
     let data = {
         id: req.body.id,
         nombre: req.body.nombre,
@@ -58,16 +76,18 @@ app.post('/api/clientes',(req,res)=>{
         curp: req.body.curp,
         cp: req.body.cp
     }
-    let sql = "insert into clientes set ?";
-    conexion.query(sql,data,
-    (error,resultado)=>{
-        if(error)
-        throw error;
-    else
-        res.send(resultado)
+    let sql = "INSERT INTO clientes SET ?";
+    conexion.query(sql, data, (error, regristos) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(regristos);
+        }
     });
 });
-app.put('/api/clientes/:id',(req,res)=>{
+
+//Actualizar
+app.put('/api/clientes/:id', (req, res) => {
     let id = req.params.id;
     let nombre = req.body.nombre;
     let apellido = req.body.apellido;
@@ -76,18 +96,21 @@ app.put('/api/clientes/:id',(req,res)=>{
     let rfc = req.body.rfc;
     let curp = req.body.curp;
     let cp = req.body.cp;
-    let sql = "update clientes set nombre=?, apellido=?, direccion=?, telefono=?, rfc=?, curp=?, cp=? where id=?";
-    conexion.query(sql,[nombre, apellido, direccion, telefono, rfc, curp, cp, id],
-    (error,fila)=>{
-        if(error)
-        throw error;
-    else
-        res.send(fila)
+
+    let sql = "UPDATE clientes set nombre = ?,apellido = ?,direccion = ?,telefono = ?,rfc = ?,curp = ?,cp = ? WHERE id = ?"
+
+    conexion.query(sql, [nombre, apellido, direccion, telefono, rfc, curp, cp, id], (error, regristos) => {
+        if (error) {
+            throw error;
+        } else {
+            res.send(regristos);
+        }
     });
 });
-app.get("/",function(req,res){
-    res.send('rutas de inicio');
-});
-app.listen(3000, function(){
-    console.log('Servidor listo');
-});
+
+
+//Encender Servidor
+let puerto = 3000;
+app.listen(puerto, function () {
+    console.log('Servidor escuchando puerto ' + puerto);
+})

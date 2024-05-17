@@ -1,8 +1,0 @@
-create database pwdata;
-show databases;
-use pwdata;
-create table Clientes(ID int, Nombre varchar(150), Apellido varchar(150), Direccion varchar(150), Telefono varchar(15), RFC varchar(18), CURP varchar(18), CP varchar(5));
-show tables;
-insert into clientes values(1,'John', 'Doe','Orlando, Florida','1234567890', '1234567890123','123456789012345678', '12345');
-select * from clientes;
-quit
