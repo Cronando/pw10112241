@@ -11,7 +11,7 @@
                 <Form :validation-schema="validationSchema" @submit="onTodoBien">
                     <div class="md-3">
                         ID 
-                        <Field name="id" id="id" class="form-control" type="text" v-model="model.cliente.id" />
+                        <Field name="id" id="id" class="form-control" type="number" v-model="model.cliente.id" />
                         <ErrorMessage name="id" />
                     </div>
                     <div class="md-3">
@@ -56,10 +56,7 @@
                 </Form>              
             </div>
         </div>
-
-
     </div>
-
 </template>
 
 <script>
@@ -70,18 +67,31 @@ import * as zod from 'zod';
 
 export default {
     name: "ClientesCreate",
-    components: { Field, Form, ErrorMessage},
+    components: { Field, Form, ErrorMessage },
     data() {
+        const phoneRegex = new RegExp(
+            /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+        );
+        const rfcRegex = new RegExp(
+            /^([a-z]{3,4})(\d{2})(\d{2})(\d{2})([0-9a-z]{3})$/i
+        );
+        const curpRegex = new RegExp(
+            /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9][12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/g
+        );
+        const cpRegex = new RegExp(
+            /^[0-9]{5}$/ 
+        );
+
         const validationSchema = toTypedSchema(
             zod.object({
-                id: zod.string({message: 'Campo Requerido'}).min(1) ,
-                nombre: zod.string({message: 'Campo Requerido'}).min(1) ,
-                apellido: zod.string({message: 'Campo Requerido'}).min(1) ,
-                direccion: zod.string({message: 'Campo Requerido'}).min(1) ,
-                telefono: zod.string({message: 'Campo Requerido'}).min(1) ,
-                rfc: zod.string({message: 'Campo Requerido'}).min(1) ,
-                curp: zod.string({message: 'Campo Requerido'}).min(1) ,
-                cp: zod.string({message: 'Campo Requerido'}).min(1) ,
+                id: zod.number({message: 'Solo Numeros'}).int() ,
+                nombre: zod.string().min(1, {message: 'Campo Requerido'}) ,
+                apellido: zod.string().min(1, {message: 'Campo Requerido'}) ,
+                direccion: zod.string().min(1, {message: 'Campo Requerido'}) ,
+                telefono: zod.string().regex(phoneRegex, 'Numero no válido').min(10, {message: 'Mínimo 10 Números'}) ,
+                rfc: zod.string().regex(rfcRegex, 'RFC no válido') ,
+                curp: zod.string().regex(curpRegex, 'CURP no válido') ,
+                cp: zod.string().regex(cpRegex, 'CP no válido'),
             })
         )
         return {
@@ -103,7 +113,8 @@ export default {
     },
     methods: {
         onTodoBien(){
-          alert('Todo validado!');  
+          // alert('Todo validado!');  
+          this.guardarCliente();
         },
         guardarCliente() {
             axios.post('http://localhost:3000/api/clientes', 
