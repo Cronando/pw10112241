@@ -1,0 +1,59 @@
+create database pwdata;
+use pwdata;
+CREATE TABLE clientes (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(150),
+    apellido VARCHAR(150),
+    direccion VARCHAR(150),
+    telefono VARCHAR(15),
+    rfc VARCHAR(15),
+    curp VARCHAR(18),
+    cp INT
+);
+CREATE TABLE vendedores (
+    idvendedor INT PRIMARY KEY,
+    nombre VARCHAR(150),
+    apellido VARCHAR(150),
+    departamentotienda VARCHAR(150)
+);
+CREATE TABLE articulos (
+    clavearticulo INT PRIMARY KEY,
+    descripcion VARCHAR(150),
+    existencia INT,
+    precio INT
+);
+CREATE TABLE ventas (
+    clavearticulo INT, 
+    cantidad INT, 
+    precio INT, 
+    fecha DATE,     
+    idvendedor INT
+);
+
+INSERT INTO clientes (id, nombre, apellido, direccion, telefono, rfc, curp, cp) VALUES
+(1, 'Juan', 'Perez', '123 Calle Principal', '555-1234', 'JUPR800101XXX', 'JUPR800101HDFRRN01', 12345),
+(2, 'Maria', 'Lopez', '456 Avenida Secundaria', '555-5678', 'MALO750202XXX', 'MALO750202MDFRRS02', 67890),
+(3, 'Carlos', 'Hernandez', '789 Boulevard Tercero', '555-9101', 'CAHE890303XXX', 'CAHE890303HDFRRS03', 10112),
+(4, 'Ana', 'Garcia', '101 Calle Cuarta', '555-1122', 'ANGA840404XXX', 'ANGA840404MDFRRS04', 13141),
+(5, 'Luis', 'Martinez', '202 Calle Quinta', '555-3344', 'LUMA700505XXX', 'LUMA700505HDFRRS05', 51617);
+
+INSERT INTO vendedores (idvendedor, nombre, apellido, departamentotienda) VALUES
+(1, 'Pedro', 'Sanchez', 'Electronics'),
+(2, 'Lucia', 'Fernandez', 'Clothing'),
+(3, 'Roberto', 'Diaz', 'Groceries'),
+(4, 'Elena', 'Martinez', 'Home Goods'),
+(5, 'Miguel', 'Torres', 'Sports');
+
+INSERT INTO articulos (clavearticulo, descripcion, existencia, precio) VALUES
+(1001, 'Smartphone', 50, 299),
+(1002, 'Laptop', 30, 899),
+(1003, 'Headphones', 100, 49),
+(1004, 'Refrigerator', 20, 599),
+(1005, 'Microwave', 40, 99);
+
+INSERT INTO ventas (clavearticulo, cantidad, precio, fecha, idvendedor) VALUES
+(1001, 2, 299, '2024-01-15', 1),  
+(1002, 1, 899, '2024-01-16', 2),  
+(1003, 5, 49, '2024-01-17', 3),   
+(1004, 1, 599, '2024-01-18', 4),  
+(1005, 3, 99, '2024-01-19', 5);   
